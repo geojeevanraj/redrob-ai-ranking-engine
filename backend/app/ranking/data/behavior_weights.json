@@ -1,0 +1,74 @@
+{
+  "component_weights": {
+    "availability": 0.20,
+    "responsiveness": 0.20,
+    "recruiter_interest": 0.15,
+    "credibility": 0.15,
+    "technical_activity": 0.15,
+    "learning_signal": 0.10,
+    "compensation_compatibility": 0.05
+  },
+  "availability": {
+    "sub_weights": {
+      "open_to_work": 0.40,
+      "notice_period": 0.25,
+      "last_active": 0.20,
+      "response_time": 0.15
+    },
+    "max_notice_period_days": 90,
+    "max_inactive_days": 60,
+    "max_response_hours": 72
+  },
+  "responsiveness": {
+    "sub_weights": {
+      "recruiter_response_rate": 0.40,
+      "avg_response_time": 0.30,
+      "interview_completion_rate": 0.30
+    },
+    "max_response_hours": 72
+  },
+  "recruiter_interest": {
+    "sub_weights": {
+      "profile_views": 0.40,
+      "saved_by_recruiters": 0.35,
+      "search_appearances": 0.25
+    },
+    "profile_views_saturation": 500,
+    "saved_by_recruiters_saturation": 50,
+    "search_appearances_saturation": 300
+  },
+  "credibility": {
+    "sub_weights": {
+      "verified_email": 0.25,
+      "verified_phone": 0.20,
+      "profile_completeness": 0.35,
+      "linkedin_connected": 0.20
+    }
+  },
+  "technical_activity": {
+    "sub_weights": {
+      "github_activity": 0.60,
+      "skill_assessments": 0.40
+    },
+    "github_activity_max": 100,
+    "skill_assessment_max": 100
+  },
+  "learning_signal": {
+    "sub_weights": {
+      "recent_activity": 0.40,
+      "assessment_participation": 0.30,
+      "profile_completeness": 0.30
+    },
+    "max_inactive_days": 60,
+    "assessment_participation_saturation": 10
+  },
+  "compensation_compatibility": {
+    "sub_weights": {
+      "salary": 0.60,
+      "relocation": 0.20,
+      "work_mode": 0.20
+    },
+    "salary_overshoot_tolerance": 0.25,
+    "neutral_score": 0.50
+  }
+}
