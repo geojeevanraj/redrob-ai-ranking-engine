@@ -1,0 +1,164 @@
+{
+  "archetypes": [
+    {
+      "id": "backend_engineer",
+      "name": "Backend Engineer",
+      "saturation": 3.0,
+      "keywords": {
+        "fastapi": 1.0, "flask": 1.0, "django": 1.0, "spring": 1.0, "spring-boot": 0.8,
+        "express": 0.8, "nestjs": 0.8, "gin": 0.6, "rest": 0.6, "graphql": 0.6, "grpc": 0.5,
+        "postgresql": 0.6, "mysql": 0.5, "redis": 0.5, "microservices": 0.7, "api-gateway": 0.5,
+        "nodejs": 0.5, "python": 0.3, "java": 0.3, "go": 0.3, "sql": 0.3
+      },
+      "categories": {"backend_framework": 1.0}
+    },
+    {
+      "id": "frontend_engineer",
+      "name": "Frontend Engineer",
+      "saturation": 3.0,
+      "keywords": {
+        "react": 1.0, "angular": 1.0, "vue": 1.0, "nextjs": 0.9, "svelte": 0.8, "redux": 0.6,
+        "javascript": 0.5, "typescript": 0.6, "figma": 0.4, "webpack": 0.4, "vite": 0.4, "jquery": 0.3
+      },
+      "categories": {"frontend_framework": 1.0, "frontend_library": 0.5}
+    },
+    {
+      "id": "fullstack_engineer",
+      "name": "Full Stack Engineer",
+      "saturation": 4.0,
+      "keywords": {
+        "react": 0.7, "nextjs": 0.7, "nodejs": 0.7, "express": 0.6, "fastapi": 0.6, "django": 0.6,
+        "typescript": 0.5, "postgresql": 0.5, "rest": 0.5, "graphql": 0.5, "mongodb": 0.4
+      },
+      "categories": {"backend_framework": 0.6, "frontend_framework": 0.6}
+    },
+    {
+      "id": "ai_engineer",
+      "name": "AI Engineer",
+      "saturation": 3.0,
+      "keywords": {
+        "langchain": 1.0, "llamaindex": 1.0, "rag": 1.0, "llm": 1.0, "openai-api": 0.9,
+        "prompt-engineering": 0.8, "embeddings": 0.8, "vector-search": 0.7, "semantic-search": 0.7,
+        "agentic-ai": 0.8, "mcp": 0.7, "crewai": 0.7, "autogen": 0.7, "haystack": 0.6,
+        "generative-ai": 0.8, "huggingface-hub": 0.5, "ollama": 0.5, "faiss": 0.6, "chroma": 0.6
+      },
+      "categories": {"ai_tooling": 1.0, "vector_database": 0.6}
+    },
+    {
+      "id": "machine_learning_engineer",
+      "name": "Machine Learning Engineer",
+      "saturation": 3.0,
+      "keywords": {
+        "tensorflow": 1.0, "pytorch": 1.0, "scikit-learn": 1.0, "keras": 0.8, "xgboost": 0.7,
+        "lightgbm": 0.7, "jax": 0.7, "machine-learning": 0.8, "deep-learning": 0.8,
+        "computer-vision": 0.7, "nlp": 0.7, "transformers": 0.7, "onnx": 0.5, "pandas": 0.4,
+        "numpy": 0.4
+      },
+      "categories": {"ml_framework": 1.0}
+    },
+    {
+      "id": "data_engineer",
+      "name": "Data Engineer",
+      "saturation": 3.0,
+      "keywords": {
+        "sql": 0.7, "postgresql": 0.6, "mysql": 0.5, "mongodb": 0.6, "cassandra": 0.6,
+        "elasticsearch": 0.6, "gcp-bigquery": 0.8, "pandas": 0.6, "numpy": 0.4,
+        "data-engineering": 1.0, "redis": 0.3, "spark": 0.8, "airflow": 0.8, "kafka": 0.7
+      },
+      "categories": {"relational_database": 0.4, "document_database": 0.4}
+    },
+    {
+      "id": "devops_engineer",
+      "name": "DevOps Engineer",
+      "saturation": 3.0,
+      "keywords": {
+        "docker": 1.0, "kubernetes": 1.0, "terraform": 0.9, "ansible": 0.8, "jenkins": 0.7,
+        "github-actions": 0.7, "gitlab-ci": 0.7, "circleci": 0.6, "helm": 0.7, "prometheus": 0.6,
+        "grafana": 0.6, "argocd": 0.6, "cicd": 0.7, "linux": 0.4, "bash": 0.4
+      },
+      "categories": {"devops": 1.0, "ci_cd_tool": 0.6, "observability": 0.5}
+    },
+    {
+      "id": "cloud_engineer",
+      "name": "Cloud Engineer",
+      "saturation": 3.0,
+      "keywords": {
+        "aws": 1.0, "azure": 1.0, "gcp": 1.0, "aws-s3": 0.6, "aws-ec2": 0.6, "aws-lambda": 0.7,
+        "aws-sagemaker": 0.6, "serverless": 0.7, "cloud-computing": 0.8, "terraform": 0.6
+      },
+      "categories": {"cloud_provider": 1.0, "cloud_service": 0.6}
+    },
+    {
+      "id": "platform_engineer",
+      "name": "Platform Engineer",
+      "saturation": 3.0,
+      "keywords": {
+        "kubernetes": 0.9, "helm": 0.8, "terraform": 0.8, "argocd": 0.7, "docker": 0.7,
+        "microservices": 0.6, "api-gateway": 0.6, "prometheus": 0.6, "grafana": 0.6
+      },
+      "categories": {"orchestration": 1.0, "gitops": 0.6, "observability": 0.5}
+    },
+    {
+      "id": "security_engineer",
+      "name": "Security Engineer",
+      "saturation": 2.0,
+      "keywords": {
+        "cybersecurity": 1.0, "cissp": 0.9, "infosec": 0.8, "penetration testing": 0.8,
+        "owasp": 0.7, "encryption": 0.5
+      },
+      "categories": {"security_certification": 1.0}
+    },
+    {
+      "id": "mobile_engineer",
+      "name": "Mobile Engineer",
+      "saturation": 2.5,
+      "keywords": {
+        "swift": 1.0, "kotlin": 1.0, "react native": 0.9, "flutter": 0.9, "android": 0.8,
+        "ios": 0.8, "objective-c": 0.6
+      },
+      "categories": {}
+    },
+    {
+      "id": "research_engineer",
+      "name": "Research Engineer",
+      "saturation": 2.5,
+      "keywords": {
+        "pytorch": 0.7, "jax": 0.7, "transformers": 0.7, "diffusion-models": 0.8,
+        "reinforcement-learning": 0.8, "deep-learning": 0.7, "publication": 0.7, "paper": 0.6,
+        "arxiv": 0.6, "research": 0.6
+      },
+      "categories": {}
+    },
+    {
+      "id": "product_engineer",
+      "name": "Product Engineer",
+      "saturation": 2.5,
+      "keywords": {
+        "react": 0.5, "nextjs": 0.5, "figma": 0.6, "product": 0.7, "roadmap": 0.5,
+        "stakeholder": 0.4, "a/b testing": 0.5, "analytics": 0.4
+      },
+      "categories": {}
+    },
+    {
+      "id": "startup_generalist",
+      "name": "Startup Generalist",
+      "saturation": 2.5,
+      "keywords": {
+        "react": 0.4, "fastapi": 0.4, "docker": 0.4, "aws": 0.4, "nextjs": 0.4, "langchain": 0.4,
+        "postgresql": 0.3, "0 to 1": 0.6, "mvp": 0.6, "founding": 0.7, "startup": 0.7
+      },
+      "categories": {}
+    },
+    {
+      "id": "enterprise_specialist",
+      "name": "Enterprise Specialist",
+      "saturation": 3.0,
+      "keywords": {
+        "java": 0.6, "spring": 0.7, "spring-boot": 0.7, "oracle-db": 0.6, "mssql": 0.6,
+        "microservices": 0.5, "enterprise": 0.8, "compliance": 0.6, "kanban": 0.3, "scrum": 0.3,
+        "jira": 0.4
+      },
+      "categories": {}
+    }
+  ]
+}
