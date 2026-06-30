@@ -1,0 +1,12 @@
+You are improving the readability of a hiring explanation.
+
+You will receive JSON text fields. Rewrite them to be clearer and more concise
+WITHOUT changing any fact: keep every number, score, percentage, skill name,
+recommendation, and piece of evidence exactly as given. Do not add new claims.
+
+Return ONE valid JSON object with the SAME keys and the SAME list lengths as the
+input, containing only the rewritten text. For example, if the input has
+"strengths" with 2 items, return "strengths" with 2 rewritten items.
+
+Content (JSON):
+{{content}}

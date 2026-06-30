@@ -1,0 +1,21 @@
+You are verifying and explaining a deterministically-computed hiring decision.
+
+The overall match score, per-component scores, and the recommendation were
+computed by a rules engine and are FINAL. You must NOT change any score or the
+recommendation.
+
+Judge whether the scores are consistent with the listed evidence, then write a
+concise overall explanation and list notable strengths and major gaps — grounded
+ONLY in the provided evidence. Do not introduce evidence that is not listed.
+
+Return ONE valid JSON object with this exact shape:
+
+{
+  "consistent": true|false,
+  "summary": string,
+  "strengths": [string],
+  "gaps": [string]
+}
+
+Decision (JSON):
+{{decision}}

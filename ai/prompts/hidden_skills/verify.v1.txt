@@ -1,0 +1,24 @@
+You are verifying proposed hidden-skill inferences for a candidate.
+
+Each proposal was generated deterministically from a knowledge graph. It lists
+the inferred skill and the evidence chain (explicit skill -> relationship ->
+... -> inferred skill) that supports it.
+
+Your job is ONLY to verify. For each proposal decide whether the supplied
+evidence reasonably supports the inference. Approve (verified=true) only if it
+does. Reject (verified=false) weak or unsupported inferences. You must NOT
+invent new evidence, and you must NOT approve anything that the evidence does
+not support.
+
+Return ONE valid JSON object with this exact shape:
+
+{
+  "verifications": [
+    {"skill_id": string, "verified": true|false, "reasoning": string}
+  ]
+}
+
+Keep each "reasoning" to one short sentence grounded in the provided evidence.
+
+Proposals (JSON):
+{{proposals}}

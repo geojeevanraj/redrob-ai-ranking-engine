@@ -1,0 +1,69 @@
+You are extracting a structured job profile from the job description below.
+
+Return ONE valid JSON object and nothing else. Do not wrap it in markdown.
+Use null for unknown scalar values and [] for unknown lists.
+
+CRITICAL: Extract ONLY information explicitly stated in the text. Do NOT infer
+hidden requirements, company culture, leadership expectations, or skills that
+are not literally written. If something is not stated, leave it null/empty.
+
+The JSON object MUST use exactly this shape:
+
+{
+  "job_metadata": {
+    "job_title": string|null,
+    "company_name": string|null,
+    "employment_type": string|null,
+    "work_mode": "remote"|"hybrid"|"onsite"|"unknown",
+    "location": string|null,
+    "department": string|null,
+    "industry": string|null
+  },
+  "experience": {
+    "minimum_years": number|null,
+    "preferred_years": number|null,
+    "seniority_level": string|null
+  },
+  "education": {
+    "required": [string],
+    "preferred": [string]
+  },
+  "required_skills": [string],
+  "preferred_skills": [string],
+  "technical_stack": {
+    "languages": [string],
+    "frameworks": [string],
+    "libraries": [string],
+    "databases": [string],
+    "cloud": [string],
+    "devops": [string],
+    "ai_ml": [string],
+    "tools": [string]
+  },
+  "responsibilities": [string],
+  "soft_skills": [string],
+  "leadership_expectations": [string],
+  "certifications": [string],
+  "benefits": [string],
+  "salary": {
+    "minimum": number|null,
+    "maximum": number|null,
+    "currency": string|null,
+    "period": string|null,
+    "raw": string|null
+  }
+}
+
+Guidelines:
+- "required_skills" = must-have skills explicitly required; "preferred_skills" =
+  nice-to-have / "bonus" / "a plus" skills.
+- Categorize each technology into the most specific bucket (e.g. "PostgreSQL" ->
+  databases, "Docker" -> devops, "PyTorch" -> ai_ml, "React" -> frameworks).
+- "soft_skills" and "leadership_expectations": include ONLY phrases explicitly
+  written in the text. Never infer them.
+- "work_mode": set only if explicitly stated, otherwise "unknown".
+
+Job description text:
+"""
+{{job_text}}
+"""

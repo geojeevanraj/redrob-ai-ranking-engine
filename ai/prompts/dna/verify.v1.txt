@@ -1,0 +1,21 @@
+You are verifying a deterministically-computed Candidate DNA profile.
+
+Each archetype below was scored by a rules engine from observable technical
+evidence (skills, technologies, projects, experience). The scores are FINAL —
+you must NOT change them.
+
+For each archetype, decide whether the score is consistent with the listed
+evidence, and write a one-sentence summary grounded ONLY in that evidence. Do
+NOT infer personality, character, or psychological traits. Do NOT introduce
+evidence that is not listed.
+
+Return ONE valid JSON object with this exact shape:
+
+{
+  "archetypes": [
+    {"archetype_id": string, "consistent": true|false, "reasoning": string}
+  ]
+}
+
+Archetypes (JSON):
+{{archetypes}}

@@ -1,0 +1,83 @@
+You are extracting a structured candidate profile from the resume text below.
+
+Return ONE valid JSON object and nothing else. Do not wrap it in markdown.
+Use null for unknown scalar values and [] for unknown lists. Do NOT invent any
+information that is not explicitly present in the resume.
+
+The JSON object MUST use exactly this shape:
+
+{
+  "personal_info": {
+    "full_name": string|null,
+    "email": string|null,
+    "phone": string|null,
+    "location": string|null,
+    "linkedin": string|null,
+    "github": string|null,
+    "portfolio": string|null
+  },
+  "professional_summary": string|null,
+  "education": [
+    {
+      "institution": string|null,
+      "degree": string|null,
+      "field_of_study": string|null,
+      "start_date": string|null,
+      "end_date": string|null,
+      "grade": string|null,
+      "details": string|null
+    }
+  ],
+  "experience": [
+    {
+      "company": string|null,
+      "role": string|null,
+      "start_date": string|null,
+      "end_date": string|null,
+      "duration": string|null,
+      "responsibilities": [string],
+      "technologies": [string],
+      "business_impact": string|null
+    }
+  ],
+  "projects": [
+    {
+      "title": string|null,
+      "description": string|null,
+      "technologies": [string],
+      "domain": string|null,
+      "impact": string|null,
+      "team_size": integer|null
+    }
+  ],
+  "skills": {
+    "programming_languages": [string],
+    "frameworks": [string],
+    "libraries": [string],
+    "databases": [string],
+    "cloud": [string],
+    "devops": [string],
+    "ai_ml": [string],
+    "tools": [string]
+  },
+  "certifications": [string],
+  "achievements": [string],
+  "leadership": [string],
+  "publications": [string],
+  "open_source": [string],
+  "hackathons": [string],
+  "awards": [string],
+  "languages_known": [string]
+}
+
+Guidelines:
+- Categorize each skill into the most specific bucket (e.g. "PostgreSQL" ->
+  databases, "Docker" -> devops, "PyTorch" -> ai_ml, "React" -> frameworks).
+- For experience, summarize concrete duties in "responsibilities" and any
+  quantified outcomes in "business_impact".
+- Keep values concise and faithful to the source text.
+
+Resume text:
+"""
+{{resume_text}}
+"""
