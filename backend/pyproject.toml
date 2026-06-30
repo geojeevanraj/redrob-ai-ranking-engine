@@ -1,0 +1,44 @@
+[project]
+name = "ai-recruitment-backend"
+version = "0.1.0"
+description = "AI Recruitment Intelligence Platform — backend API (Sprint 0 foundation)"
+requires-python = ">=3.12"
+
+# ── Black ────────────────────────────────────────────────────
+[tool.black]
+line-length = 100
+target-version = ["py312"]
+
+# ── isort ────────────────────────────────────────────────────
+[tool.isort]
+profile = "black"
+line_length = 100
+known_first_party = ["app"]
+
+# ── Ruff ─────────────────────────────────────────────────────
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "C4", "SIM", "RUF"]
+ignore = ["B008"]  # FastAPI uses function calls in argument defaults (Depends)
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101", "RUF001"]
+
+# ── mypy ─────────────────────────────────────────────────────
+[tool.mypy]
+python_version = "3.12"
+strict = true
+plugins = ["pydantic.mypy"]
+warn_unused_ignores = true
+disallow_untyped_defs = true
+ignore_missing_imports = true
+
+# ── pytest ───────────────────────────────────────────────────
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+addopts = "-ra -q"

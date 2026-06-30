@@ -1,0 +1,48 @@
+# Docker Compose — local development stack
+# Brings up: PostgreSQL (pgvector) and the backend API.
+# Usage: `docker compose up --build`  (or `make up`)
+
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: recruit_db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-recruit}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-recruit_dev_pw}
+      POSTGRES_DB: ${POSTGRES_DB:-recruitment}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./infra/postgres/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-recruit} -d ${POSTGRES_DB:-recruitment}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: ../infra/docker/backend.Dockerfile
+    container_name: recruit_backend
+    env_file:
+      - .env
+    environment:
+      # Inside the compose network the DB host is the service name.
+      POSTGRES_HOST: db
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app
+      # Mount the sibling `ai` package so the backend can import it at runtime.
+      # The backend adds the repo root to sys.path; in-container that resolves
+      # to "/", so `ai` is made available at "/ai".
+      - ./ai:/ai
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+volumes:
+  db_data:
