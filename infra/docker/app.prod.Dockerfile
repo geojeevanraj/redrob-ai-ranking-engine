@@ -4,14 +4,18 @@
 # `ai/` package, which must sit next to `backend/`):
 #   docker build -f infra/docker/app.prod.Dockerfile -t ai-recruitment .
 #
-# Runs both processes via start-prod.sh: Streamlit is the public web port
-# ($PORT), the backend is internal on 127.0.0.1:8000. They share a filesystem
-# so dataset-by-path handoff and custom uploads work.
+# The backend (FastAPI pins an older starlette) and Streamlit (needs a newer
+# starlette) are installed into SEPARATE virtualenvs so their dependencies never
+# clash in one site-packages. Both run in the same container (shared filesystem),
+# so dataset-by-path handoff and custom uploads work. Streamlit is the public web
+# port ($PORT); the backend is internal on 127.0.0.1:8000.
 FROM python:3.12-slim
 
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
-    PIP_NO_CACHE_DIR=1
+    PIP_NO_CACHE_DIR=1 \
+    BACKEND_VENV=/opt/backend-venv \
+    SANDBOX_VENV=/opt/sandbox-venv
 
 WORKDIR /app
 
@@ -19,12 +23,16 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends curl \
     && rm -rf /var/lib/apt/lists/*
 
+# Two isolated virtual environments.
+RUN python -m venv "$BACKEND_VENV" && python -m venv "$SANDBOX_VENV"
+
 # Install dependencies first (better layer caching).
 COPY backend/requirements.txt backend/requirements.txt
 COPY sandbox/requirements.txt sandbox/requirements.txt
-RUN pip install --upgrade pip \
-    && pip install -r backend/requirements.txt \
-    && pip install -r sandbox/requirements.txt
+RUN "$BACKEND_VENV/bin/pip" install --upgrade pip \
+    && "$BACKEND_VENV/bin/pip" install -r backend/requirements.txt
+RUN "$SANDBOX_VENV/bin/pip" install --upgrade pip \
+    && "$SANDBOX_VENV/bin/pip" install -r sandbox/requirements.txt
 
 # Application source: backend + sibling `ai` package + sandbox.
 COPY backend/ backend/
