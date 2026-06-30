@@ -1,0 +1,55 @@
+# Render Blueprint — AI Recruitment Intelligence Platform (sandbox demo)
+#
+# One Docker web service (Streamlit sandbox public + FastAPI backend internal)
+# plus a managed PostgreSQL database. Deploy by pushing this repo and choosing
+# "New +" → "Blueprint" in the Render dashboard.
+#
+# Secrets are NOT stored here. GEMINI_API_KEY is set manually in the dashboard.
+
+databases:
+  - name: recruitment-db
+    databaseName: recruitment
+    user: recruit
+    plan: free
+
+services:
+  - type: web
+    name: ai-recruitment-sandbox
+    runtime: docker
+    plan: free
+    dockerfilePath: ./infra/docker/app.prod.Dockerfile
+    dockerContext: .
+    healthCheckPath: /_stcore/health
+    autoDeploy: true
+    envVars:
+      - key: APP_ENV
+        value: production
+      # Database connection (assembled into an asyncpg DSN by the backend).
+      - key: POSTGRES_HOST
+        fromDatabase: { name: recruitment-db, property: host }
+      - key: POSTGRES_PORT
+        fromDatabase: { name: recruitment-db, property: port }
+      - key: POSTGRES_USER
+        fromDatabase: { name: recruitment-db, property: user }
+      - key: POSTGRES_PASSWORD
+        fromDatabase: { name: recruitment-db, property: password }
+      - key: POSTGRES_DB
+        fromDatabase: { name: recruitment-db, property: database }
+      # LLM (Gemini used ONLY for job-description parsing; ranking uses no LLM).
+      - key: PRIMARY_LLM_PROVIDER
+        value: gemini
+      - key: FALLBACK_LLM_PROVIDER
+        value: ollama
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash
+      - key: GEMINI_API_KEY
+        sync: false        # set manually in the Render dashboard (secret)
+      # Demo dataset (small sample bundled in the image).
+      - key: RANKING_DATASET_PATH
+        value: /app/dataset/sample_candidates.jsonl
+      - key: SANDBOX_OFFICIAL_DATASET
+        value: /app/dataset/sample_candidates.jsonl
+      - key: SANDBOX_OFFICIAL_JD
+        value: /app/dataset/job_description.docx
+      - key: SANDBOX_BACKEND_URL
+        value: http://localhost:8000/api/v1

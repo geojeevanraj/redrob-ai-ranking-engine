@@ -1,0 +1,35 @@
+# ── Deployment image excludes ────────────────────────────────
+# Keep production images small and NEVER bundle the 465 MB official dataset.
+
+# The official full dataset (use a small sample for the deployed demo).
+dataset/candidates.jsonl
+
+# Virtual environments
+**/.venv/
+.venv/
+
+# Python caches / build artifacts
+**/__pycache__/
+**/*.pyc
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+
+# Local runtime output
+**/var/
+backend/var/
+
+# VCS / IDE / specs / tooling not needed at runtime
+.git/
+.gitignore
+.vscode/
+.kiro/
+
+# Local env files (secrets are injected via the platform's env vars)
+.env
+backend/.env
+sandbox/.env
+
+# Docs / misc that don't belong in the runtime image
+*.md
+!sandbox/README.md

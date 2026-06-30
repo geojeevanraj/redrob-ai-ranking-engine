@@ -1,0 +1,48 @@
+# Local production-like stack — build and run the combined image + Postgres.
+# Mirrors the cloud deployment so you can validate the image before pushing.
+#
+#   docker compose -f docker-compose.prod.yml up --build
+#
+# Then open the sandbox at http://localhost:8501
+# Secrets come from a local `.env` (see .env.production.example).
+
+services:
+  db:
+    image: postgres:16
+    container_name: recruit_prod_db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-recruit}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-recruit_dev_pw}
+      POSTGRES_DB: ${POSTGRES_DB:-recruitment}
+    volumes:
+      - prod_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-recruit} -d ${POSTGRES_DB:-recruitment}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build:
+      context: .
+      dockerfile: infra/docker/app.prod.Dockerfile
+    container_name: recruit_prod_app
+    environment:
+      APP_ENV: production
+      POSTGRES_HOST: db
+      POSTGRES_USER: ${POSTGRES_USER:-recruit}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-recruit_dev_pw}
+      POSTGRES_DB: ${POSTGRES_DB:-recruitment}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      PRIMARY_LLM_PROVIDER: gemini
+      FALLBACK_LLM_PROVIDER: ollama
+      GEMINI_MODEL: gemini-2.5-flash
+      PORT: 8501
+    ports:
+      - "8501:8501"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  prod_db_data:
