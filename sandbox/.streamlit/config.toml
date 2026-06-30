@@ -1,0 +1,10 @@
+# Streamlit configuration for the AI Recruitment Intelligence Platform sandbox.
+#
+# Raises the maximum file-upload size to 1 GB so the uploaders accept both the
+# official ~465 MB candidates.jsonl and large job-description files (PDF/DOCX).
+# This is the official, supported way to change the limit — no custom upload
+# logic and no app.py hardcoding.
+
+[server]
+maxUploadSize = 1024
+maxMessageSize = 1024
