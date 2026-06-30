@@ -1,0 +1,10 @@
+{
+  "top_n": 100,
+  "behavioral_match_weight": 0.10,
+  "default_role_profile": null,
+  "reasoning": {
+    "max_strength_skills": 4,
+    "min_experience_mention_years": 0.5,
+    "strong_behavioral_threshold": 0.70
+  }
+}
