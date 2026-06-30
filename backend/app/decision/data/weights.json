@@ -1,0 +1,73 @@
+{
+  "thresholds": {"strong_hire": 0.8, "hire": 0.65, "consider": 0.45},
+  "semantic_partial_credit": 0.5,
+  "role_keywords": {
+    "backend": "backend_engineer",
+    "ai": "ai_engineer",
+    "ml engineer": "ai_engineer",
+    "machine learning": "ml_engineer",
+    "devops": "devops_engineer",
+    "site reliability": "devops_engineer",
+    "frontend": "frontend_engineer",
+    "front end": "frontend_engineer",
+    "full stack": "fullstack_engineer",
+    "fullstack": "fullstack_engineer",
+    "data engineer": "data_engineer",
+    "cloud": "cloud_engineer",
+    "platform": "platform_engineer"
+  },
+  "profiles": {
+    "default": {
+      "required_skill_match": 0.22,
+      "skill_coverage": 0.10,
+      "preferred_skill_match": 0.05,
+      "technology_stack_match": 0.15,
+      "experience_alignment": 0.12,
+      "project_relevance": 0.08,
+      "hidden_skill_contribution": 0.06,
+      "dna_compatibility": 0.07,
+      "education_alignment": 0.04,
+      "career_progression": 0.04,
+      "knowledge_graph_semantic_match": 0.07
+    },
+    "backend_engineer": {
+      "required_skill_match": 0.25,
+      "skill_coverage": 0.10,
+      "preferred_skill_match": 0.05,
+      "technology_stack_match": 0.18,
+      "experience_alignment": 0.12,
+      "project_relevance": 0.08,
+      "hidden_skill_contribution": 0.05,
+      "dna_compatibility": 0.07,
+      "education_alignment": 0.03,
+      "career_progression": 0.03,
+      "knowledge_graph_semantic_match": 0.04
+    },
+    "ai_engineer": {
+      "required_skill_match": 0.22,
+      "skill_coverage": 0.08,
+      "preferred_skill_match": 0.06,
+      "technology_stack_match": 0.14,
+      "experience_alignment": 0.08,
+      "project_relevance": 0.12,
+      "hidden_skill_contribution": 0.10,
+      "dna_compatibility": 0.08,
+      "education_alignment": 0.03,
+      "career_progression": 0.03,
+      "knowledge_graph_semantic_match": 0.06
+    },
+    "devops_engineer": {
+      "required_skill_match": 0.24,
+      "skill_coverage": 0.10,
+      "preferred_skill_match": 0.05,
+      "technology_stack_match": 0.20,
+      "experience_alignment": 0.12,
+      "project_relevance": 0.07,
+      "hidden_skill_contribution": 0.04,
+      "dna_compatibility": 0.06,
+      "education_alignment": 0.03,
+      "career_progression": 0.04,
+      "knowledge_graph_semantic_match": 0.05
+    }
+  }
+}
