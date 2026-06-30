@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+.venv/
+venv/
+env/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+htmlcov/
+.coverage
+coverage.xml
+*.log
+
+# Environment
+.env
+.env.*
+!.env.example
+!.env.production.example
+*.env.local
+
+# Large official dataset + generated artifacts (never commit; >100MB GitHub limit)
+dataset/candidates.jsonl
+dataset/team_submission.csv
+
+# Editors / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Docker
+*.pid
+
+# Uploaded files (local storage)
+var/
+backend/var/
+
+# Alembic local
+backend/alembic/versions/__pycache__/
