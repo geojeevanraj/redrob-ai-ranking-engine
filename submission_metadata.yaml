@@ -1,29 +1,36 @@
 # Redrob Hackathon — Submission Metadata
-# Generated for sprint 11.3 compliance. Fill in the fields marked FILL_IN.
+# Generated for sprint 11.3 compliance.
 
 # ============================================================================
 # Team identity
 # ============================================================================
-team_name: "FILL_IN"            # e.g. "redrob-ai-team"
+team_name: "Thumbs Up"
 
 primary_contact:
   name: "Geo Jeevan Raj"
   email: "geojeevanraj007@gmail.com"
-  phone: "FILL_IN"              # +91-XXXXXXXXXX
+  phone: "6382229095"
 
 team_members:
   - name: "Geo Jeevan Raj"
     email: "geojeevanraj007@gmail.com"
     role: "Team Lead / AI Engineer"
+  - name: "Aruneshwaran V S"
+    email: "atusarun@gmail.com"
+    role: "Backend Engineer / System Architecture"
+  - name: "Devanand A"
+    email: "devanand2005a@gmail.com"
+    role: "Data Engineering / Knowledge Graph"
+  - name: "Gowtham S T"
+    email: "gowthamst31@gmail.com"
+    role: "Deployment & QA Engineer"
 
 # ============================================================================
 # Code and reproducibility
 # ============================================================================
 github_repo: "https://github.com/geojeevanraj/redrob-ai-ranking-engine"
 
-sandbox_link: "FILL_IN"
-# Replace with your actual Render URL, e.g.:
-# https://ai-recruitment-sandbox.onrender.com
+sandbox_link: "https://ai-recruitment-sandbox.onrender.com/"
 
 reproduce_command: |
   # Step 1 (one-time, requires GEMINI_API_KEY, ~10s):
@@ -74,7 +81,7 @@ ai_usage_summary: |
   fed to any hosted LLM during ranking.
 
 # ============================================================================
-# Methodology summary (≤200 words — strongly recommended)
+# Methodology summary (<=200 words -- strongly recommended)
 # ============================================================================
 methodology_summary: |
   Knowledge-graph-augmented deterministic ranking over all 100,000 candidates.
@@ -82,7 +89,7 @@ methodology_summary: |
   skills and experience requirements; (2) for each candidate, compute seven
   deterministic scores: required-skill match, preferred-skill match, tech-stack
   match, experience alignment, project relevance, education alignment, and
-  career progression — all resolved through a 194-node skill Knowledge Graph
+  career progression -- all resolved through a 194-node skill Knowledge Graph
   that handles aliases and semantic relationships; (3) a Hidden Skill Inference
   engine traverses the KG from each candidate's explicit skills to infer latent
   skills not on their profile; (4) a Candidate DNA engine assigns archetype
