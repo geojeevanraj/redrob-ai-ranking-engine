@@ -1,0 +1,153 @@
+{
+  "job_metadata": {
+    "job_title": "Senior AI Engineer ΓÇö Founding Team",
+    "company_name": "Redrob AI",
+    "employment_type": "Full-time",
+    "work_mode": "hybrid",
+    "location": "Pune/Noida, India",
+    "department": "AI Engineering",
+    "industry": "AI-native talent intelligence platform"
+  },
+  "experience": {
+    "minimum_years": 5.0,
+    "preferred_years": 9.0,
+    "seniority_level": "Senior"
+  },
+  "education": {
+    "required": [],
+    "preferred": []
+  },
+  "required_skills": [
+    "Production experience with embeddings-based retrieval systems deployed to real users",
+    "Production experience with vector databases or hybrid search infrastructure",
+    "Strong Python",
+    "Hands-on experience designing evaluation frameworks for ranking systems"
+  ],
+  "preferred_skills": [
+    "LLM fine-tuning experience",
+    "Experience with learning-to-rank models",
+    "Prior exposure to HR-tech, recruiting tech, or marketplace products",
+    "Background in distributed systems or large-scale inference optimization",
+    "Open-source contributions in the AI/ML space"
+  ],
+  "technical_stack": {
+    "languages": [
+      "Python"
+    ],
+    "frameworks": [
+      "sentence-transformers",
+      "XGBoost"
+    ],
+    "libraries": [
+      "LoRA",
+      "QLoRA",
+      "PEFT",
+      "FAISS"
+    ],
+    "databases": [
+      "Pinecone",
+      "Weaviate",
+      "Qdrant",
+      "Milvus",
+      "OpenSearch",
+      "Elasticsearch"
+    ],
+    "cloud": [],
+    "devops": [],
+    "ai_ml": [
+      "embeddings",
+      "retrieval",
+      "ranking",
+      "LLMs",
+      "fine-tuning",
+      "BM25",
+      "hybrid retrieval",
+      "LLM-based re-ranking",
+      "learning-to-rank models"
+    ],
+    "tools": [
+      "OpenAI embeddings",
+      "BGE",
+      "E5"
+    ]
+  },
+  "responsibilities": [
+    "Own the intelligence layer of Redrob's product",
+    "Audit current systems (BM25 + rule-based scoring)",
+    "Identify highest-leverage things to fix",
+    "Ship a v2 ranking system that demonstrably improves recruiter-engagement metrics",
+    "Set up evaluation infrastructure (offline benchmarks, online A/B testing, recruiter-feedback loops)",
+    "Drive the long-term architecture of candidate-JD matching at scale",
+    "Mentor the next round of hires",
+    "Work closely with recruiter-experience PM on what to build"
+  ],
+  "soft_skills": [
+    "Scrappy product-engineering attitude",
+    "Willing to ship a working ranker in a week even if the underlying ML is \"obviously suboptimal\"",
+    "Comfortable with deep technical depth in modern ML systems",
+    "Comfortable with scrappy product-engineering attitude",
+    "Tilt slightly toward shipper than toward researcher",
+    "Genuinely believe culture-fit matters more at this stage than skills-fit",
+    "Work async-first and write a lot",
+    "Disagree openly and decide quickly",
+    "Move fast and break things"
+  ],
+  "leadership_expectations": [
+    "Mentoring the next round of hires"
+  ],
+  "certifications": [],
+  "benefits": [
+    "We can buy out up to 30 days (notice period)"
+  ],
+  "salary": {
+    "minimum": null,
+    "maximum": null,
+    "currency": null,
+    "period": null,
+    "raw": null
+  },
+  "technology_stack": [
+    "Python",
+    "sentence-transformers",
+    "XGBoost",
+    "LoRA",
+    "QLoRA",
+    "PEFT",
+    "FAISS",
+    "Pinecone",
+    "Weaviate",
+    "Qdrant",
+    "Milvus",
+    "OpenSearch",
+    "Elasticsearch",
+    "embeddings",
+    "retrieval",
+    "ranking",
+    "LLMs",
+    "fine-tuning",
+    "BM25",
+    "hybrid retrieval",
+    "LLM-based re-ranking",
+    "learning-to-rank models",
+    "OpenAI embeddings",
+    "BGE",
+    "E5",
+    "Production experience with embeddings-based retrieval systems deployed to real users",
+    "Production experience with vector databases or hybrid search infrastructure",
+    "Strong Python",
+    "Hands-on experience designing evaluation frameworks for ranking systems",
+    "LLM fine-tuning experience",
+    "Experience with learning-to-rank models",
+    "Prior exposure to HR-tech, recruiting tech, or marketplace products",
+    "Background in distributed systems or large-scale inference optimization",
+    "Open-source contributions in the AI/ML space"
+  ],
+  "metadata": {
+    "extraction_confidence": 1.0,
+    "missing_fields": [],
+    "warnings": [],
+    "llm_provider": "gemini",
+    "llm_model": "gemini-2.5-flash",
+    "timestamp": "2026-06-30T09:33:57.44702Z"
+  }
+}

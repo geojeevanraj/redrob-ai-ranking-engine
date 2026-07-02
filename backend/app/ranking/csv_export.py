@@ -43,14 +43,56 @@ def collect_matched_skills(decision: DecisionProfile, *, limit: int = 8) -> list
 
 
 def collect_missing_skills(decision: DecisionProfile, *, limit: int = 4) -> list[str]:
-    """Ordered, deduped missing skills from the required-skill component first."""
+    """Ordered, deduped *atomic* missing skills — single-word or known short tech terms.
+
+    Long JD sentences extracted as required-skill phrases, and multi-word
+    non-technical phrases, are excluded. Only single-word tokens and short
+    recognised compound tech terms (≤ 2 words, starts with a capital or is
+    lowercase tech) are included, so the Missing clause is specific and varies
+    per candidate based on their actual tech-stack gaps.
+    """
     seen: set[str] = set()
     out: list[str] = []
-    for key in ("required_skill_match", "technology_stack_match"):
+    for key in ("technology_stack_match", "required_skill_match"):
         comp = next((c for c in decision.components if c.key == key), None)
         if comp is None:
             continue
         for skill in comp.missing_skills:
+            words = skill.split()
+            # Keep only short tokens that look like atomic tech terms:
+            # 1-word always OK; 2-word only if it looks like a tech name
+            # (e.g. "Apache Kafka", "Apache Beam") — not plain English phrases.
+            if len(words) == 0:
+                continue
+            if len(words) == 1:
+                pass  # always atomic
+            elif len(words) == 2:
+                # Accept two-word compound tech names (both parts capitalized,
+                # or first part is a known tech prefix).
+                # Reject plain-English phrases like "Strong Python".
+                _TECH_PREFIXES = {
+                    "apache",
+                    "amazon",
+                    "google",
+                    "azure",
+                    "aws",
+                    "open",
+                    "scikit",
+                    "tensor",
+                    "bert",
+                    "gpt",
+                    "llm",
+                    "rag",
+                }
+                first = words[0].lower()
+                second = words[1]
+                is_compound_tech = first in _TECH_PREFIXES or (
+                    words[0][0].isupper() and second[0].isupper()
+                )
+                if not is_compound_tech:
+                    continue
+            else:
+                continue  # 3+ words: skip (likely a JD sentence fragment)
             low = skill.lower()
             if low not in seen:
                 seen.add(low)

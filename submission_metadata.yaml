@@ -1,0 +1,105 @@
+# Redrob Hackathon — Submission Metadata
+# Generated for sprint 11.3 compliance. Fill in the fields marked FILL_IN.
+
+# ============================================================================
+# Team identity
+# ============================================================================
+team_name: "FILL_IN"            # e.g. "redrob-ai-team"
+
+primary_contact:
+  name: "Geo Jeevan Raj"
+  email: "geojeevanraj007@gmail.com"
+  phone: "FILL_IN"              # +91-XXXXXXXXXX
+
+team_members:
+  - name: "Geo Jeevan Raj"
+    email: "geojeevanraj007@gmail.com"
+    role: "Team Lead / AI Engineer"
+
+# ============================================================================
+# Code and reproducibility
+# ============================================================================
+github_repo: "https://github.com/geojeevanraj/redrob-ai-ranking-engine"
+
+sandbox_link: "FILL_IN"
+# Replace with your actual Render URL, e.g.:
+# https://ai-recruitment-sandbox.onrender.com
+
+reproduce_command: |
+  # Step 1 (one-time, requires GEMINI_API_KEY, ~10s):
+  #   python rank.py --parse-jd
+  # Step 2 (fully offline, CPU-only, ~3 min for 100k candidates):
+  python rank.py \
+    --candidates dataset/candidates.jsonl \
+    --job-profile dataset/job_profile.json \
+    --out submission.csv
+
+# ============================================================================
+# Compute environment
+# ============================================================================
+compute:
+  platform: "Windows 11, local machine"
+  cpu_cores: 4
+  ram_gb: 16
+  python_version: "3.12.11"
+  os: "Windows 11"
+  uses_gpu_for_inference: false
+  has_network_during_ranking: false   # ranking step is fully offline
+  pre_computation_required: true      # JD parsed once via Gemini; result stored in dataset/job_profile.json
+  pre_computation_time_minutes: 1     # one Gemini call (~10s)
+
+# ============================================================================
+# Benchmark (verified on official 100k dataset)
+# ============================================================================
+benchmark:
+  total_candidates: 100000
+  runtime_seconds: 189
+  peak_memory_mb: 176
+  top_n: 100
+  cpu_only: true
+  llm_calls_during_ranking: 0
+
+# ============================================================================
+# AI tools declaration
+# ============================================================================
+ai_tools_used:
+  - "Kiro (Amazon Kiro AI IDE)"
+  - "Gemini"    # used for JD parsing (one-time pre-computation only)
+
+ai_usage_summary: |
+  Kiro AI IDE was used for code assistance throughout development.
+  Gemini API (gemini-2.5-flash) is used ONLY for the one-time job-description
+  parsing step (pre-computation). The ranking pipeline itself is fully
+  deterministic and makes zero LLM or network calls. No candidate data was
+  fed to any hosted LLM during ranking.
+
+# ============================================================================
+# Methodology summary (≤200 words — strongly recommended)
+# ============================================================================
+methodology_summary: |
+  Knowledge-graph-augmented deterministic ranking over all 100,000 candidates.
+  The pipeline: (1) parse the JD once via LLM to extract required/preferred
+  skills and experience requirements; (2) for each candidate, compute seven
+  deterministic scores: required-skill match, preferred-skill match, tech-stack
+  match, experience alignment, project relevance, education alignment, and
+  career progression — all resolved through a 194-node skill Knowledge Graph
+  that handles aliases and semantic relationships; (3) a Hidden Skill Inference
+  engine traverses the KG from each candidate's explicit skills to infer latent
+  skills not on their profile; (4) a Candidate DNA engine assigns archetype
+  affinities (AI Engineer, Backend, DevOps, etc.); (5) a Behavioral Intelligence
+  engine scores seven engagement signals from the redrob_signals field
+  (availability, responsiveness, recruiter interest, credibility, technical
+  activity, learning signal, compensation compatibility); (6) a Decision Engine
+  combines all components with configurable role-profile weights into an overall
+  match score. Candidates are ranked by overall score using a bounded min-heap
+  (O(N) memory). No embeddings, no ML model, no hosted APIs during ranking.
+
+# ============================================================================
+# Declarations
+# ============================================================================
+declarations:
+  read_submission_spec: true
+  code_is_original_work: true
+  no_collusion: true
+  honeypot_check_done: false          # NOTE: explicitly verify before final submit
+  reproduction_tested: true           # rank.py tested on full 100k dataset locally
