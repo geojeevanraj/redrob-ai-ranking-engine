@@ -304,7 +304,7 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for full instructions.
 3. Set `GEMINI_API_KEY` in the environment tab.
 4. Deploy — Render provisions a managed PostgreSQL + Docker web service.
 
-Live sandbox: `FILL_IN_YOUR_RENDER_URL`
+Live sandbox: `https://ai-recruitment-sandbox.onrender.com/`
 
 ---
 
@@ -359,3 +359,4 @@ python dataset/validate_submission.py dataset/team_submission.csv
 - Add a learning-to-rank layer (LightGBM/XGBoost) trained on the ground-truth relevance tiers for higher NDCG.
 - Implement honeypot detection (flag candidates with inconsistent tenure/skill claims).
 - Expand behavioral signal weighting based on domain-specific recruiter feedback.
+
